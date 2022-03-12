@@ -28,9 +28,9 @@ function saveEvents(clickedButton) {
   }
 
 //set up time/clock element
-var time = document.getElementById('currentDay');
+var time = document.getElementById("currentDay");
 function currentDay() {
-    time.textContent = new Date().toString();
+  time.textContent = new Date().toString();
 }
 
 //refresh every second
@@ -50,14 +50,14 @@ function checkEvent() {
   
         //else if timeBlock is equal to the clockEl, will add present class & remove past class
       } else if (timeBlock === clockEl) {
-        $(this).removeClass("past");
-        $(this).addClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("present");
   
         //else if conditional for if timeBlock is equal to the clockEl, will add future class & remove either past or present
       } else if (timeBlock > clockEl) {
-        $(this).removeClass("past");
-        $(this).removeClass("present");
-        $(this).addClass("future");
+         $(this).removeClass("past");
+         $(this).removeClass("present");
+         $(this).addClass("future");
       }
     });
   }
