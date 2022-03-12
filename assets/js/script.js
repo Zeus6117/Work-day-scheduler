@@ -3,7 +3,7 @@ var events = [];
 
 function createEvents(eventText) {
     //create elements that make up the event
-    var eventText = $('textarea').text(textInput);
+    var eventText = $("textarea").text(textInput);
     //append elements to parent
     eventText.append(eventText);
 }
@@ -38,23 +38,23 @@ setInterval(currentDay, 1000)
 
 //use moment.js to add the text content of the current month, day, year
 function checkEvent() {
-    var clock = moment().hours();
+    var clockEl = moment().hours();
   
     //set up the event for all time blocks
     $(".event-category").each(function () {
       var timeBlock = parseInt($(this).attr("data-hour"));
   
-      //if conditional for if timeBlock is less than the clock, will add past class
-      if (timeBlock < clock) {
+      //if timeBlock is less than clockEl, will add past class
+      if (timeBlock < clockEl) {
         $(this).addClass("past");
   
-        //else if conditional for if timeBlock is equal to the clock, will add present class & remove past class
-      } else if (timeBlock === clock) {
+        //else if timeBlock is equal to the clockEl, will add present class & remove past class
+      } else if (timeBlock === clockEl) {
         $(this).removeClass("past");
         $(this).addClass("present");
   
-        //else if conditional for if timeBlock is equal to the clock, will add future class & remove either past or present
-      } else if (timeBlock > clock) {
+        //else if conditional for if timeBlock is equal to the clockEl, will add future class & remove either past or present
+      } else if (timeBlock > clockEl) {
         $(this).removeClass("past");
         $(this).removeClass("present");
         $(this).addClass("future");
@@ -63,3 +63,23 @@ function checkEvent() {
   }
 
   setInterval(checkEvent, 1000);
+
+  //when you click a card, allows user to edit
+  $(".event-category").on("click", function () {
+    var text = "";
+  
+    var textInput = $("<textarea>").val(text);
+  
+    textInput.trigger("focus");
+  });
+
+  //save to localStorage when saveBtn is clicked
+$('.saveBtn').on("click", function () {
+      var text = $(this).siblings('.description').val();
+
+      localStorage.setItem($(this).parent().attr("data-hour"), text);
+      loadEvents();
+  });
+
+  //calls loadEvents()
+  loadEvents();
