@@ -16,4 +16,4 @@ Head over to https://zeus6117.github.io/Work-day-scheduler/ to view the page liv
 
 **Screenshot:**
 
-![Screenshot of Work Day Scheduler](./assets/images/WDS-screenshot.jpg
+![Screenshot of Work Day Scheduler](./assets/images/WDS-screenshot.jpg)
